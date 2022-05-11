@@ -43,6 +43,7 @@ class ViewController: UIViewController {
 			do {
 				let memes = try await memeService.fetchMemesData()
 				self.memes = memes.data.memes
+				try await Task.sleep(nanoseconds: 3_000_000_000)
 
 				tableView.reloadData()
 			} catch {
@@ -70,6 +71,7 @@ extension ViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MemeTableViewCell.self), for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
 
+		cell.configCell(meme: memes[indexPath.row])
 		return cell
 	}
 }

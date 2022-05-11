@@ -11,6 +11,7 @@ class MemeTableViewCell: UITableViewCell {
 	let nameLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.systemFont(ofSize: 15)
+		label.lineBreakMode = .byTruncatingTail
 
 		return label
 	}()
@@ -23,6 +24,8 @@ class MemeTableViewCell: UITableViewCell {
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+		setupUI()
 	}
 
 	@available(*, unavailable)
@@ -30,28 +33,28 @@ class MemeTableViewCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		
-		setupUI()
-	}
-
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 	}
-	
+
 	func setupUI() {
 		addSubview(nameLabel)
 		addSubview(thumbnailView)
-		
+
 		thumbnailView.snp.makeConstraints { make in
-			make.size.equalTo(250)
+			make.size.equalTo(150)
+			make.leading.equalToSuperview().offset(20)
 			make.top.bottom.equalToSuperview().inset(20)
 		}
-		
+
 		nameLabel.snp.makeConstraints { make in
 			make.leading.equalTo(thumbnailView.snp.trailing).offset(20)
+			make.trailing.equalToSuperview().offset(-20)
 			make.centerY.equalToSuperview()
 		}
+	}
+
+	func configCell(meme: Meme) {
+		nameLabel.text = meme.name
 	}
 }
