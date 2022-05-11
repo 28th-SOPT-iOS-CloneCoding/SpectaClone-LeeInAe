@@ -26,9 +26,16 @@ class ViewController: UIViewController {
 			do {
 				try await memeService.fetchMemesData()
 			} catch {
-				print("fail ㅋㅋ")
+				presentAlert(message: error.localizedDescription)
 			}
 		}
 	}
 
+	func presentAlert(message: String) {
+		let alert = UIAlertController(title: "잠깐만요!", message: message, preferredStyle: .alert)
+		let okAction = UIAlertAction(title: "OK", style: .default)
+
+		alert.addAction(okAction)
+		present(alert, animated: true, completion: nil)
+	}
 }
