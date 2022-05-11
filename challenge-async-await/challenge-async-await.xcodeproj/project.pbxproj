@@ -15,6 +15,9 @@
 		CD0E0FE7282BF1E000B97F60 /* challenge_async_awaitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E0FE6282BF1E000B97F60 /* challenge_async_awaitTests.swift */; };
 		CD0E0FF1282BF1E000B97F60 /* challenge_async_awaitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E0FF0282BF1E000B97F60 /* challenge_async_awaitUITests.swift */; };
 		CD0E0FF3282BF1E000B97F60 /* challenge_async_awaitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E0FF2282BF1E000B97F60 /* challenge_async_awaitUITestsLaunchTests.swift */; };
+		CD0E1004282BFA3D00B97F60 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E1003282BFA3D00B97F60 /* BaseResponse.swift */; };
+		CD0E1006282BFA7800B97F60 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E1005282BFA7800B97F60 /* Meme.swift */; };
+		CD0E1008282BFBA200B97F60 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E1007282BFBA200B97F60 /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		CD0E0FEC282BF1E000B97F60 /* challenge-async-awaitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "challenge-async-awaitUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0E0FF0282BF1E000B97F60 /* challenge_async_awaitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challenge_async_awaitUITests.swift; sourceTree = "<group>"; };
 		CD0E0FF2282BF1E000B97F60 /* challenge_async_awaitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challenge_async_awaitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CD0E1003282BFA3D00B97F60 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		CD0E1005282BFA7800B97F60 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		CD0E1007282BFBA200B97F60 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,8 @@
 		CD0E0FCE282BF1DE00B97F60 /* challenge-async-await */ = {
 			isa = PBXGroup;
 			children = (
+				CD0E1002282BF9F400B97F60 /* Model */,
+				CD0E1001282BF75000B97F60 /* Network */,
 				CD0E1000282BF57200B97F60 /* Supports */,
 				CD0E0FFF282BF56700B97F60 /* Scene */,
 				CD0E0FCF282BF1DE00B97F60 /* AppDelegate.swift */,
@@ -138,6 +146,23 @@
 				CD0E0FDA282BF1E000B97F60 /* LaunchScreen.storyboard */,
 			);
 			path = Supports;
+			sourceTree = "<group>";
+		};
+		CD0E1001282BF75000B97F60 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CD0E1002282BF9F400B97F60 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD0E1003282BFA3D00B97F60 /* BaseResponse.swift */,
+				CD0E1005282BFA7800B97F60 /* Meme.swift */,
+				CD0E1007282BFBA200B97F60 /* NetworkError.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +296,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0E0FD4282BF1DE00B97F60 /* ViewController.swift in Sources */,
+				CD0E1004282BFA3D00B97F60 /* BaseResponse.swift in Sources */,
+				CD0E1006282BFA7800B97F60 /* Meme.swift in Sources */,
+				CD0E1008282BFBA200B97F60 /* NetworkError.swift in Sources */,
 				CD0E0FD0282BF1DE00B97F60 /* AppDelegate.swift in Sources */,
 				CD0E0FD2282BF1DE00B97F60 /* SceneDelegate.swift in Sources */,
 			);
@@ -371,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -426,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
