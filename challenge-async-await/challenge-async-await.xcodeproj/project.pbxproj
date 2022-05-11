@@ -20,6 +20,7 @@
 		CD0E1008282BFBA200B97F60 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E1007282BFBA200B97F60 /* NetworkError.swift */; };
 		CD0E100A282C091800B97F60 /* MemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E1009282C091800B97F60 /* MemeService.swift */; };
 		CD0E100C282C0A2200B97F60 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E100B282C0A2200B97F60 /* ApiManager.swift */; };
+		CD0E100F282C165B00B97F60 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD0E100E282C165B00B97F60 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0E100F282C165B00B97F60 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +189,9 @@
 			dependencies = (
 			);
 			name = "challenge-async-await";
+			packageProductDependencies = (
+				CD0E100E282C165B00B97F60 /* SnapKit */,
+			);
 			productName = "challenge-async-await";
 			productReference = CD0E0FCC282BF1DE00B97F60 /* challenge-async-await.app */;
 			productType = "com.apple.product-type.application";
@@ -259,6 +264,9 @@
 				Base,
 			);
 			mainGroup = CD0E0FC3282BF1DE00B97F60;
+			packageReferences = (
+				CD0E100D282C165B00B97F60 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = CD0E0FCD282BF1DE00B97F60 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -642,6 +650,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD0E100D282C165B00B97F60 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD0E100E282C165B00B97F60 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD0E100D282C165B00B97F60 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD0E0FC4282BF1DE00B97F60 /* Project object */;
 }
