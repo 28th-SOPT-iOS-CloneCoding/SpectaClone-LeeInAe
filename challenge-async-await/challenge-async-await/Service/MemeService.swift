@@ -20,6 +20,8 @@ struct MemeService {
 		do {
 			let response = try await ApiManager.shared.requestData(request: request)
 
+			// TODO: - 여기도 분리하고싶어
+
 			switch response {
 			case .success(let data):
 				return try JSONDecoder().decode(BaseResponse<Memes>.self, from: data)
