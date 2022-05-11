@@ -56,5 +56,13 @@ class MemeTableViewCell: UITableViewCell {
 
 	func configCell(meme: Meme) {
 		nameLabel.text = meme.name
+
+		// FIXME: - cell에서 가져오지말고 view에서 visible될 떄
+
+		Task {
+			do {
+				thumbnailView.image = try await ApiManager.shared.fetchImage(from: URL(string: meme.url)!)
+			} catch {}
+		}
 	}
 }
