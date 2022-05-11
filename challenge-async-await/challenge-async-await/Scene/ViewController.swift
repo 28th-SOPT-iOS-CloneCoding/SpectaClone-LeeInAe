@@ -15,7 +15,8 @@ class ViewController: UIViewController {
 
 		Task {
 			do {
-				try await fetchMemesData()
+				let d = try await fetchMemesData()
+				print(d)
 			} catch {
 				print("fail ㅋㅋ")
 			}
@@ -31,12 +32,25 @@ class ViewController: UIViewController {
 			/// response: URLResponse (The metadata associated with the response)
 			let (data, response) = try await URLSession.shared.data(for: request)
 
-			print(data)
-			print(response)
-			return .success(data)
+			return verifyResponse(data: data, response: response)
 		} else {
 			// Fallback on earlier versions
 			return .failure(NetworkError.versionError)
+		}
+	}
+
+	func verifyResponse(data: Data, response: URLResponse) -> Result<Data, Error> {
+		guard let response = response as? HTTPURLResponse else { return .failure(NetworkError.unknown) }
+
+		switch response.statusCode {
+		case 200...299:
+			return .success(data)
+		case 400...499:
+			return .failure(NetworkError.invalidRequest)
+		case 500...599:
+			return .failure(NetworkError.serverError)
+		default:
+			return .failure(NetworkError.unknown)
 		}
 	}
 
@@ -51,7 +65,6 @@ class ViewController: UIViewController {
 			case .success(let data):
 				return try JSONDecoder().decode(BaseResponse<Memes>.self, from: data)
 			case .failure(let error):
-				print(error)
 				throw error
 			}
 
