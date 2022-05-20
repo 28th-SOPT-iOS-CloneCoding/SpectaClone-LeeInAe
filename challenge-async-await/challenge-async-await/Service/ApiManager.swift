@@ -11,7 +11,7 @@ import UIKit
 struct ApiManager {
 	static let shared = Self.init() /// 굳이 ... ?
 	static let baseURL = "https://api.imgflip.com"
-	
+
 	func requestData(request: URLRequest) async throws -> Result<Data, Error> {
 		if #available(iOS 15.0, *) {
 			/// response: URLResponse (The metadata associated with the response)
@@ -22,6 +22,17 @@ struct ApiManager {
 			// Fallback on earlier versions
 			return .failure(NetworkError.versionError)
 		}
+	}
+
+	func originalRequestData(request: URLRequest, completion: @escaping (Data) -> ()) {
+		let task = URLSession.shared.dataTask(with: request) { data, response, error in
+			if let _ = error, let _ = response as? HTTPURLResponse { return }
+
+			guard let data = data else { return }
+			completion(data)
+		}
+
+		task.resume()
 	}
 
 	func verifyResponse(data: Data, response: URLResponse) -> Result<Data, Error> {
@@ -37,12 +48,12 @@ struct ApiManager {
 		default:
 			return .failure(NetworkError.unknown)
 		}
-	}
-	
+	}
+
 	func fetchImage(from url: URL) async throws -> UIImage {
 		if #available(iOS 15.0, *) {
 			let (data, response) = try await URLSession.shared.data(from: url)
-			guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.notOK}
+			guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.notOK }
 
 			guard let image = UIImage(data: data) else { throw FetchError.badData }
 			return image
