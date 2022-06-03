@@ -38,17 +38,4 @@ struct ApiManager {
 			return .failure(NetworkError.unknown)
 		}
 	}
-	
-	func fetchImage(from url: URL) async throws -> UIImage {
-		if #available(iOS 15.0, *) {
-			let (data, response) = try await URLSession.shared.data(from: url)
-			guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw FetchError.notOK}
-
-			guard let image = UIImage(data: data) else { throw FetchError.badData }
-			return image
-		} else {
-			// Fallback on earlier versions
-			throw NetworkError.versionError
-		}
-	}
 }

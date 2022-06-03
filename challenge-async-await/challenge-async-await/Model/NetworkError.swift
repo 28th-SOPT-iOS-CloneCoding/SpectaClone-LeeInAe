@@ -22,3 +22,7 @@ enum FetchError: Error {
 	case notOK
 	case badData
 }
+
+enum ImageError: Error {
+    case badImage
+}

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
 	lazy var tableView: UITableView = {
 		let table = UITableView()
+        table.rowHeight = 190
 		table.delegate = self
 		table.dataSource = self
 		table.register(MemeTableViewCell.self, forCellReuseIdentifier: String(describing: MemeTableViewCell.self))
@@ -36,6 +37,9 @@ class ViewController: UIViewController {
 		tableView.snp.makeConstraints { make in
 			make.edges.equalToSuperview()
 		}
+        
+        let reloadButton = UIBarButtonItem(title: "reload", style: .plain, target: self, action: #selector(didTapReloadButton(_:)))
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = reloadButton
 	}
 
 	func fetchMemesData() {
@@ -59,6 +63,13 @@ class ViewController: UIViewController {
 		alert.addAction(okAction)
 		present(alert, animated: true, completion: nil)
 	}
+    
+    @objc
+    func didTapReloadButton(_ sender: UIButton) {
+        Task {
+            await ImageDownloader.shared.logCache()
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
