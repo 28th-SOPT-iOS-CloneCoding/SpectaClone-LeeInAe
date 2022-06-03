@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ImageDownloader {
+actor ImageDownloader {
     typealias Image = UIImage
     static let shared = ImageDownloader()
     private var cache: [URL: Image] = [:]
@@ -21,7 +21,7 @@ class ImageDownloader {
         }
 
         let image = try await fetchImage(from: url)
-        self.cache[url] = image
+        cache[url] = image
 
         return image
     }
@@ -39,7 +39,11 @@ class ImageDownloader {
         }
     }
 
+    func isCachedImage(url: URL) -> Bool {
+        return cache.keys.contains(url)
+    }
+
     func logCache() {
-        print(self.cache)
+        print(cache)
     }
 }
